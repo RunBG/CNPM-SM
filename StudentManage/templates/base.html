@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet"
+          type="text/css">
+    <link href="{{ url_for('static', filename='css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter&display=swap" rel="stylesheet">
+
+
+    <title>{% block title%}{% endblock %}</title>
+</head>
+   <style>
+            .centerElement{
+                background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+                height: 50%; /* 100% of the viewport height */
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+            .changeText{
+                background: #25CC0F;
+                background: #864FCF;
+                background: linear-gradient(to right, #864FCF 0%, #1B1B1B 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .changeTextFont{
+                font-weight: 600;
+                font-family: 'Bitter', serif;
+            }
+
+    </style>
+<body class="changeBackGround" style="padding:0 10%;background: url('./static/img/bg.jpg') no-repeat center center fixed;
+                    background-size: cover;" id="page-top">
+    <div class="d-flex align-middle centerElement">
+        <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="" style="width: 150px;height: 150px;">
+        <div class="p-3">
+            <h2 class="text-info changeTextFont changeText">TRƯỜNG TRUNG HỌC PHỔ THÔNG KON TUM</h2>
+            <hr>
+            <h4><i class="changeTextFont changeText">Đi một ngày đàng, học một sàng khôn</i></h4>
+        </div>
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('logout') }}" style="text-decoration:none;" class="changeText"><h4>
+            Đăng xuất</h4></a>
+        {% else %}
+        <a href="{{ url_for('login') }}" style="text-decoration:none" class="changeText"><h4>
+            Đăng nhập</h4></a>
+        {% endif %}
+    </div>
+{% block header %}
+{% endblock %}
+{% block body %}
+{% endblock %}
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto" style="position:absolute; bottom: 1rem; left:45%">
+            <span>Tuyển - Tài - Đạt</span>
+        </div>
+    </div>
+</footer>
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+</body>
+</html>
+<script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/sb-admin-2.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/chart.js/Chart.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/demo/chart-bar-demo.js') }}"></script>
+{% block jsFooter %}
+{% endblock %}
